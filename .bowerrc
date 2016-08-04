@@ -1,0 +1,9 @@
+{
+  "directory": "bower_components",
+  "interactive": false,
+  "registry": "http://registry.bower.io/",
+  "proxy":"http://webproxy.wlb2.nam.nsroot.net:8080",
+  "https-proxy":"http://webproxy.wlb2.nam.nsroot.net:8080",
+  "strict-ssl": false
+}
+

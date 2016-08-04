@@ -1,0 +1,14 @@
+{
+  "name": "angular-electron",
+  "version": "0.0.1",
+  "description": "an application built with angularjs and electron.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Walter Wang",
+  "license": "ISC",
+  "dependencies": {
+    "electron-prebuilt": "^1.2.0"
+  }
+}
