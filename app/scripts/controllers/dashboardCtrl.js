@@ -2,7 +2,7 @@
     'use strict';
     
     angular.module('app')
-        .controller('dashboardCtrl', ['dashboardSvc', '$scope', function (customerService, $scope) {
+        .controller('dashboardCtrl', ['$scope', function ($scope) {
             $scope.Title = 'Angular Customer';
         }]);
 })();
