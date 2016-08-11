@@ -4,7 +4,7 @@ angular.module('app')
             GetTradeVolumn: function (params) {
                 return Promise(function (defer) {
                     if (params) {
-                        HttpGet('/User', { region: params.region, bizLine: params.bizLine }, defer);
+                        HttpGet('http://10.61.131.220:8080/tradeAPI', params, defer);
                     }
                 });
             }
