@@ -12,7 +12,10 @@ angular.module('app')
             var options = {
                 chart: {
                     title: 'TPS trade volumn statistic',
-                    subtitle: 'data from tps cash',
+                    subtitle: 'data from tps cash'
+                },
+                vAxis: {
+                    format: 'decimal'
                 },
                 width: '100%',
                 height: 600
@@ -27,18 +30,25 @@ angular.module('app')
                 data.addColumn('number', 'GOVT Volumn');
                 data.addRow(['', 0]);
 
-                chart.draw(data, options);
+                chart.draw(data, google.charts.Line.convertOptions(options));
 
                 function refreshDataInterval() {
+                    var params = {
+                        id: 'line',
+                        region: 'NAM',
+                        bizLine: 'GOVT',
+                        date: (new Date()).toLocaleDateString()
+                    };
+
                     setTimeout(function () {
-                        DynamicService.GetTradeVolumn({ region: 'NAM', bizLine: 'GOVT' }).then(function (result) {
+                        DynamicService.GetTradeVolumn(params).then(function (result) {
                             if (result && result.data) {
                                 if (data.getNumberOfRows() >= 10) {
                                     data.removeRow(data.getNumberOfRows() - 10);
                                 }
-                                data.addRow([result.data.time, result.data.volumn]);
+                                data.addRow([result.data.Time, result.data.Volumn]);
 
-                                chart.draw(data, options);
+                                chart.draw(data, google.charts.Line.convertOptions(options));
                             }
                         }, function (errStatus) {
                             console.log(errStatus);
@@ -51,7 +61,7 @@ angular.module('app')
                         data.removeRow(data.getNumberOfRows() - 10);
                     }
                     data.addRow([(new Date()).toLocaleTimeString('en-US', { hour12: false }), Math.floor(Math.random() * 1000)]);
-                    chart.draw(data, options);
+                    chart.draw(data, google.charts.Line.convertOptions(options));
                 }
             }
         }]);
